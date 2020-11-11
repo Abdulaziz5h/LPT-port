@@ -17,15 +17,11 @@ namespace mainProject
         public static int finishedItemsValue = 0;
         public static int totalPaperPrint = 0;
         public static int heatDegree = 0;
-
+        public static bool systemState = false;
+        
         public Form1()
         {
             InitializeComponent();
-        }
-
-        private void Form1_Load(object sender, EventArgs e)
-        {
-
         }
 
         public void init_Date_From_modal()
@@ -42,7 +38,6 @@ namespace mainProject
 
         private void init_variables(object sender, EventArgs e)
         {
-
             Form2 f2 = new Form2();
             f2.ShowDialog();
             init_Date_From_modal();
@@ -52,20 +47,28 @@ namespace mainProject
         {
             set_paper_printer.Enabled = true;
             heat_press.Enabled = true;
+            action_print_Item_Timer.Enabled = true;
 
-
-            radio_check_paper_print.Checked = true;
+            systemState = true;
+            checkBox_check_paper_print.Checked = true;
 
             system_state.Text = "النظام في حالة عمل";
             system_state.BackColor = Color.LightGreen;
+            set_system_variables.Text = "تعديل عدد القصة";
+
+            finish_semulation.Enabled = true;
+            finish_semulation.BackColor = Color.LightBlue;
+
+            start_simulation.Enabled = false;
+            start_simulation.BackColor = Color.WhiteSmoke;
         }
 
         private void set_paper_printer_Tick(object sender, EventArgs e)
         {
             if (totalPaperPrint <= leftItemsValue)
             {
-                print_paper.Enabled = true;
-                radio_print_paper.Checked = true;
+                checkBox_check_paper_print.Checked = true;
+                print_paper.Enabled = true; 
             }
         }
 
@@ -73,30 +76,96 @@ namespace mainProject
         {
             if (totalPaperPrint <= leftItemsValue)
             {
+                checkBox_print_paper.Checked = true;
                 paper_printer_number.Text = (totalPaperPrint++).ToString();
             }
             else
             {
-                print_paper.Enabled = false;
+                checkBox_print_paper.Checked = false;
+                print_paper.Enabled = false; 
             }
         }
 
         private void action_print_Item_Timer_Tick(object sender, EventArgs e)
         {
-            //if ()
-            //{
-
-            //}
+            if(leftItemsValue != 0)
+            {
+                if (heatDegree <= 180 && heatDegree >= 172 && totalPaperPrint != 0)
+                {
+                    action_print_Item_Timer.Enabled = false;
+                    checkBox_set_system_vars.Checked = false;
+                    checkBox_action_print.Checked = true;
+                    leftItemsValue--;
+                    totalPaperPrint--;
+                    finishedItemsValue++;
+                    leftItem.Text = leftItemsValue.ToString();
+                    paper_printer_number.Text = totalPaperPrint.ToString();
+                    finished_item_printed.Text = finishedItemsValue.ToString();
+                    set_system_var_timer.Enabled = true;
+                }
+            }
+            else
+            {
+                finish_semulation_method();
+            }
         }
 
         private void heat_press_Tick(object sender, EventArgs e)
         {
-            if (heatDegree <= 180)
+            if (heatDegree < 180 && systemState)
             {
-                heatDegree += 4;
-                heat_degree.Text = heatDegree.ToString() + " Cْ";
-                heat_degree_progressBar.Value = heatDegree / 2;
+                heatDegree = heatDegree < 28 ? heatDegree + 4 : heatDegree + 8;
+            } else
+            {
+                heatDegree = heatDegree < 28 ? heatDegree - 4 : heatDegree - 8;
+                if(heatDegree == 0)
+                {
+                    heat_press.Enabled = false;
+                }
             }
+            heat_degree.Text = heatDegree.ToString() + " Cْ";
+            heat_degree_progressBar.Value = heatDegree / 2;
+        }
+
+        private void finish_semulation_Click(object sender, EventArgs e)
+        {
+            finish_semulation_method();
+        }
+        public void finish_semulation_method()
+        {
+            set_paper_printer.Enabled = false;
+            print_paper.Enabled = false;
+            action_print_Item_Timer.Enabled = false;
+
+            systemState = false;
+
+            set_system_variables.Text = "تحديد عدد القصة";
+            system_state.Text = "النظام في حالة توقف";
+            system_state.BackColor = Color.Silver;
+
+            checkBox_set_system_vars.Checked = false;
+            checkBox_action_print.Checked = false;
+            finish_semulation.Enabled = false;
+            finish_semulation.BackColor = Color.WhiteSmoke;
+            if (leftItemsValue == 0)
+            {
+                start_simulation.Enabled = false;
+                start_simulation.BackColor = Color.WhiteSmoke;
+                set_system_var_timer.Enabled = false;
+
+            } else
+            {
+                start_simulation.Enabled = true;
+                start_simulation.BackColor = Color.LightBlue;
+            }
+        }
+
+        private void set_system_var_timer_Tick(object sender, EventArgs e)
+        {
+            checkBox_set_system_vars.Checked = true;
+            checkBox_action_print.Checked = false;
+            action_print_Item_Timer.Enabled = true;
+            set_system_var_timer.Enabled = false;
         }
     }
 }

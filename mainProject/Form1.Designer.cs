@@ -33,7 +33,7 @@
             this.label12 = new System.Windows.Forms.Label();
             this.system_state = new System.Windows.Forms.Button();
             this.leftItem = new System.Windows.Forms.Label();
-            this.label7 = new System.Windows.Forms.Label();
+            this.finished_item_printed = new System.Windows.Forms.Label();
             this.totalItems = new System.Windows.Forms.Label();
             this.labe5 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
@@ -41,26 +41,27 @@
             this.label2 = new System.Windows.Forms.Label();
             this.paper_printer_number = new System.Windows.Forms.Label();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.checkBox_print_paper = new System.Windows.Forms.CheckBox();
+            this.checkBox_action_print = new System.Windows.Forms.CheckBox();
+            this.checkBox_set_system_vars = new System.Windows.Forms.CheckBox();
+            this.checkBox_check_paper_print = new System.Windows.Forms.CheckBox();
+            this.label16 = new System.Windows.Forms.Label();
             this.label15 = new System.Windows.Forms.Label();
             this.label14 = new System.Windows.Forms.Label();
             this.label13 = new System.Windows.Forms.Label();
             this.heat_degree = new System.Windows.Forms.Label();
             this.label9 = new System.Windows.Forms.Label();
             this.heat_degree_progressBar = new System.Windows.Forms.ProgressBar();
-            this.radioButton3 = new System.Windows.Forms.RadioButton();
-            this.radioButton2 = new System.Windows.Forms.RadioButton();
-            this.radio_check_paper_print = new System.Windows.Forms.RadioButton();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
             this.finish_semulation = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
+            this.set_system_variables = new System.Windows.Forms.Button();
             this.start_simulation = new System.Windows.Forms.Button();
             this.label11 = new System.Windows.Forms.Label();
             this.set_paper_printer = new System.Windows.Forms.Timer(this.components);
             this.print_paper = new System.Windows.Forms.Timer(this.components);
             this.action_print_Item_Timer = new System.Windows.Forms.Timer(this.components);
             this.heat_press = new System.Windows.Forms.Timer(this.components);
-            this.label16 = new System.Windows.Forms.Label();
-            this.radio_print_paper = new System.Windows.Forms.RadioButton();
+            this.set_system_var_timer = new System.Windows.Forms.Timer(this.components);
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.groupBox3.SuspendLayout();
@@ -72,7 +73,7 @@
             this.groupBox1.Controls.Add(this.label12);
             this.groupBox1.Controls.Add(this.system_state);
             this.groupBox1.Controls.Add(this.leftItem);
-            this.groupBox1.Controls.Add(this.label7);
+            this.groupBox1.Controls.Add(this.finished_item_printed);
             this.groupBox1.Controls.Add(this.totalItems);
             this.groupBox1.Controls.Add(this.labe5);
             this.groupBox1.Controls.Add(this.label4);
@@ -124,16 +125,16 @@
             this.leftItem.TabIndex = 7;
             this.leftItem.Text = "0";
             // 
-            // label7
+            // finished_item_printed
             // 
-            this.label7.AutoSize = true;
-            this.label7.Font = new System.Drawing.Font("Cairo", 9.749999F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label7.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.label7.Location = new System.Drawing.Point(39, 181);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(17, 24);
-            this.label7.TabIndex = 6;
-            this.label7.Text = "0";
+            this.finished_item_printed.AutoSize = true;
+            this.finished_item_printed.Font = new System.Drawing.Font("Cairo", 9.749999F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.finished_item_printed.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.finished_item_printed.Location = new System.Drawing.Point(39, 181);
+            this.finished_item_printed.Name = "finished_item_printed";
+            this.finished_item_printed.Size = new System.Drawing.Size(17, 24);
+            this.finished_item_printed.TabIndex = 6;
+            this.finished_item_printed.Text = "0";
             // 
             // totalItems
             // 
@@ -203,6 +204,10 @@
             // groupBox2
             // 
             this.groupBox2.BackColor = System.Drawing.SystemColors.Menu;
+            this.groupBox2.Controls.Add(this.checkBox_print_paper);
+            this.groupBox2.Controls.Add(this.checkBox_action_print);
+            this.groupBox2.Controls.Add(this.checkBox_set_system_vars);
+            this.groupBox2.Controls.Add(this.checkBox_check_paper_print);
             this.groupBox2.Controls.Add(this.label16);
             this.groupBox2.Controls.Add(this.label15);
             this.groupBox2.Controls.Add(this.label14);
@@ -210,10 +215,6 @@
             this.groupBox2.Controls.Add(this.heat_degree);
             this.groupBox2.Controls.Add(this.label9);
             this.groupBox2.Controls.Add(this.heat_degree_progressBar);
-            this.groupBox2.Controls.Add(this.radio_print_paper);
-            this.groupBox2.Controls.Add(this.radioButton3);
-            this.groupBox2.Controls.Add(this.radioButton2);
-            this.groupBox2.Controls.Add(this.radio_check_paper_print);
             this.groupBox2.Font = new System.Drawing.Font("Cairo", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.groupBox2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.groupBox2.Location = new System.Drawing.Point(424, 65);
@@ -223,6 +224,53 @@
             this.groupBox2.TabIndex = 1;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "سير العملية";
+            // 
+            // checkBox_print_paper
+            // 
+            this.checkBox_print_paper.AutoSize = true;
+            this.checkBox_print_paper.Location = new System.Drawing.Point(321, 220);
+            this.checkBox_print_paper.Name = "checkBox_print_paper";
+            this.checkBox_print_paper.Size = new System.Drawing.Size(15, 14);
+            this.checkBox_print_paper.TabIndex = 16;
+            this.checkBox_print_paper.UseVisualStyleBackColor = true;
+            // 
+            // checkBox_action_print
+            // 
+            this.checkBox_action_print.AutoSize = true;
+            this.checkBox_action_print.Location = new System.Drawing.Point(321, 83);
+            this.checkBox_action_print.Name = "checkBox_action_print";
+            this.checkBox_action_print.Size = new System.Drawing.Size(15, 14);
+            this.checkBox_action_print.TabIndex = 15;
+            this.checkBox_action_print.UseVisualStyleBackColor = true;
+            // 
+            // checkBox_set_system_vars
+            // 
+            this.checkBox_set_system_vars.AutoSize = true;
+            this.checkBox_set_system_vars.Location = new System.Drawing.Point(321, 116);
+            this.checkBox_set_system_vars.Name = "checkBox_set_system_vars";
+            this.checkBox_set_system_vars.Size = new System.Drawing.Size(15, 14);
+            this.checkBox_set_system_vars.TabIndex = 14;
+            this.checkBox_set_system_vars.UseVisualStyleBackColor = true;
+            // 
+            // checkBox_check_paper_print
+            // 
+            this.checkBox_check_paper_print.AutoSize = true;
+            this.checkBox_check_paper_print.Location = new System.Drawing.Point(320, 52);
+            this.checkBox_check_paper_print.Name = "checkBox_check_paper_print";
+            this.checkBox_check_paper_print.Size = new System.Drawing.Size(15, 14);
+            this.checkBox_check_paper_print.TabIndex = 13;
+            this.checkBox_check_paper_print.UseVisualStyleBackColor = true;
+            // 
+            // label16
+            // 
+            this.label16.AutoSize = true;
+            this.label16.Font = new System.Drawing.Font("Cairo", 9.749999F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label16.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.label16.Location = new System.Drawing.Point(204, 216);
+            this.label16.Name = "label16";
+            this.label16.Size = new System.Drawing.Size(111, 24);
+            this.label16.TabIndex = 12;
+            this.label16.Text = "تجهيز ورق الطباعة";
             // 
             // label15
             // 
@@ -289,47 +337,11 @@
             this.heat_degree_progressBar.Size = new System.Drawing.Size(146, 23);
             this.heat_degree_progressBar.TabIndex = 0;
             // 
-            // radioButton3
-            // 
-            this.radioButton3.AutoSize = true;
-            this.radioButton3.Enabled = false;
-            this.radioButton3.Font = new System.Drawing.Font("Cairo", 9.749999F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.radioButton3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.radioButton3.Location = new System.Drawing.Point(321, 118);
-            this.radioButton3.Name = "radioButton3";
-            this.radioButton3.Size = new System.Drawing.Size(14, 13);
-            this.radioButton3.TabIndex = 2;
-            this.radioButton3.UseVisualStyleBackColor = true;
-            // 
-            // radioButton2
-            // 
-            this.radioButton2.AutoSize = true;
-            this.radioButton2.Enabled = false;
-            this.radioButton2.Font = new System.Drawing.Font("Cairo", 9.749999F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.radioButton2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.radioButton2.Location = new System.Drawing.Point(321, 85);
-            this.radioButton2.Name = "radioButton2";
-            this.radioButton2.Size = new System.Drawing.Size(14, 13);
-            this.radioButton2.TabIndex = 1;
-            this.radioButton2.UseVisualStyleBackColor = true;
-            // 
-            // radio_check_paper_print
-            // 
-            this.radio_check_paper_print.AutoSize = true;
-            this.radio_check_paper_print.Enabled = false;
-            this.radio_check_paper_print.Font = new System.Drawing.Font("Cairo", 9.749999F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.radio_check_paper_print.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.radio_check_paper_print.Location = new System.Drawing.Point(321, 54);
-            this.radio_check_paper_print.Name = "radio_check_paper_print";
-            this.radio_check_paper_print.Size = new System.Drawing.Size(14, 13);
-            this.radio_check_paper_print.TabIndex = 8;
-            this.radio_check_paper_print.UseVisualStyleBackColor = true;
-            // 
             // groupBox3
             // 
             this.groupBox3.BackColor = System.Drawing.SystemColors.Menu;
             this.groupBox3.Controls.Add(this.finish_semulation);
-            this.groupBox3.Controls.Add(this.button2);
+            this.groupBox3.Controls.Add(this.set_system_variables);
             this.groupBox3.Controls.Add(this.start_simulation);
             this.groupBox3.Font = new System.Drawing.Font("Cairo", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.groupBox3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
@@ -343,7 +355,7 @@
             // 
             // finish_semulation
             // 
-            this.finish_semulation.BackColor = System.Drawing.SystemColors.GradientInactiveCaption;
+            this.finish_semulation.BackColor = System.Drawing.Color.WhiteSmoke;
             this.finish_semulation.Enabled = false;
             this.finish_semulation.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.finish_semulation.Font = new System.Drawing.Font("Cairo", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -354,24 +366,25 @@
             this.finish_semulation.TabIndex = 2;
             this.finish_semulation.Text = "انهاء المحاكاة";
             this.finish_semulation.UseVisualStyleBackColor = false;
+            this.finish_semulation.Click += new System.EventHandler(this.finish_semulation_Click);
             // 
-            // button2
+            // set_system_variables
             // 
-            this.button2.BackColor = System.Drawing.Color.LightBlue;
-            this.button2.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.button2.Font = new System.Drawing.Font("Cairo", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.button2.Location = new System.Drawing.Point(46, 42);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(218, 39);
-            this.button2.TabIndex = 1;
-            this.button2.Text = "تحديد عدد القصة";
-            this.button2.UseVisualStyleBackColor = false;
-            this.button2.Click += new System.EventHandler(this.init_variables);
+            this.set_system_variables.BackColor = System.Drawing.Color.LightBlue;
+            this.set_system_variables.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.set_system_variables.Font = new System.Drawing.Font("Cairo", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.set_system_variables.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.set_system_variables.Location = new System.Drawing.Point(46, 42);
+            this.set_system_variables.Name = "set_system_variables";
+            this.set_system_variables.Size = new System.Drawing.Size(218, 39);
+            this.set_system_variables.TabIndex = 1;
+            this.set_system_variables.Text = "تحديد عدد القصة";
+            this.set_system_variables.UseVisualStyleBackColor = false;
+            this.set_system_variables.Click += new System.EventHandler(this.init_variables);
             // 
             // start_simulation
             // 
-            this.start_simulation.BackColor = System.Drawing.SystemColors.GradientInactiveCaption;
+            this.start_simulation.BackColor = System.Drawing.Color.WhiteSmoke;
             this.start_simulation.Enabled = false;
             this.start_simulation.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.start_simulation.Font = new System.Drawing.Font("Cairo", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -398,17 +411,17 @@
             // 
             // set_paper_printer
             // 
-            this.set_paper_printer.Interval = 2000;
+            this.set_paper_printer.Interval = 1000;
             this.set_paper_printer.Tick += new System.EventHandler(this.set_paper_printer_Tick);
             // 
             // print_paper
             // 
-            this.print_paper.Interval = 400;
+            this.print_paper.Interval = 600;
             this.print_paper.Tick += new System.EventHandler(this.print_paper_Tick);
             // 
             // action_print_Item_Timer
             // 
-            this.action_print_Item_Timer.Interval = 2000;
+            this.action_print_Item_Timer.Interval = 1000;
             this.action_print_Item_Timer.Tick += new System.EventHandler(this.action_print_Item_Timer_Tick);
             // 
             // heat_press
@@ -416,28 +429,10 @@
             this.heat_press.Interval = 3000;
             this.heat_press.Tick += new System.EventHandler(this.heat_press_Tick);
             // 
-            // label16
+            // set_system_var_timer
             // 
-            this.label16.AutoSize = true;
-            this.label16.Font = new System.Drawing.Font("Cairo", 9.749999F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label16.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.label16.Location = new System.Drawing.Point(204, 216);
-            this.label16.Name = "label16";
-            this.label16.Size = new System.Drawing.Size(111, 24);
-            this.label16.TabIndex = 12;
-            this.label16.Text = "تجهيز ورق الطباعة";
-            // 
-            // radio_print_paper
-            // 
-            this.radio_print_paper.AutoSize = true;
-            this.radio_print_paper.Enabled = false;
-            this.radio_print_paper.Font = new System.Drawing.Font("Cairo", 9.749999F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.radio_print_paper.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.radio_print_paper.Location = new System.Drawing.Point(321, 222);
-            this.radio_print_paper.Name = "radio_print_paper";
-            this.radio_print_paper.Size = new System.Drawing.Size(14, 13);
-            this.radio_print_paper.TabIndex = 3;
-            this.radio_print_paper.UseVisualStyleBackColor = true;
+            this.set_system_var_timer.Interval = 3000;
+            this.set_system_var_timer.Tick += new System.EventHandler(this.set_system_var_timer_Tick);
             // 
             // Form1
             // 
@@ -451,7 +446,6 @@
             this.Controls.Add(this.groupBox1);
             this.Name = "Form1";
             this.Text = "الرئيسية";
-            this.Load += new System.EventHandler(this.Form1_Load);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             this.groupBox2.ResumeLayout(false);
@@ -466,7 +460,7 @@
 
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.Label leftItem;
-        private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.Label finished_item_printed;
         private System.Windows.Forms.Label totalItems;
         private System.Windows.Forms.Label labe5;
         private System.Windows.Forms.Label label4;
@@ -476,13 +470,10 @@
         private System.Windows.Forms.GroupBox groupBox2;
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.ProgressBar heat_degree_progressBar;
-        private System.Windows.Forms.RadioButton radioButton3;
-        private System.Windows.Forms.RadioButton radioButton2;
-        private System.Windows.Forms.RadioButton radio_check_paper_print;
         private System.Windows.Forms.GroupBox groupBox3;
         private System.Windows.Forms.Label heat_degree;
         private System.Windows.Forms.Button finish_semulation;
-        private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.Button set_system_variables;
         private System.Windows.Forms.Button start_simulation;
         private System.Windows.Forms.Button system_state;
         private System.Windows.Forms.Label label11;
@@ -495,7 +486,11 @@
         private System.Windows.Forms.Timer action_print_Item_Timer;
         private System.Windows.Forms.Timer heat_press;
         private System.Windows.Forms.Label label16;
-        private System.Windows.Forms.RadioButton radio_print_paper;
+        private System.Windows.Forms.CheckBox checkBox_check_paper_print;
+        private System.Windows.Forms.CheckBox checkBox_print_paper;
+        private System.Windows.Forms.CheckBox checkBox_action_print;
+        private System.Windows.Forms.CheckBox checkBox_set_system_vars;
+        private System.Windows.Forms.Timer set_system_var_timer;
     }
 }
 
