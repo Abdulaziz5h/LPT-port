@@ -62,6 +62,8 @@
             this.action_print_Item_Timer = new System.Windows.Forms.Timer(this.components);
             this.heat_press = new System.Windows.Forms.Timer(this.components);
             this.set_system_var_timer = new System.Windows.Forms.Timer(this.components);
+            this.label1 = new System.Windows.Forms.Label();
+            this.press_state = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.groupBox3.SuspendLayout();
@@ -204,6 +206,8 @@
             // groupBox2
             // 
             this.groupBox2.BackColor = System.Drawing.SystemColors.Menu;
+            this.groupBox2.Controls.Add(this.press_state);
+            this.groupBox2.Controls.Add(this.label1);
             this.groupBox2.Controls.Add(this.checkBox_print_paper);
             this.groupBox2.Controls.Add(this.checkBox_action_print);
             this.groupBox2.Controls.Add(this.checkBox_set_system_vars);
@@ -220,7 +224,7 @@
             this.groupBox2.Location = new System.Drawing.Point(424, 65);
             this.groupBox2.Name = "groupBox2";
             this.groupBox2.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
-            this.groupBox2.Size = new System.Drawing.Size(358, 254);
+            this.groupBox2.Size = new System.Drawing.Size(358, 290);
             this.groupBox2.TabIndex = 1;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "سير العملية";
@@ -228,7 +232,7 @@
             // checkBox_print_paper
             // 
             this.checkBox_print_paper.AutoSize = true;
-            this.checkBox_print_paper.Location = new System.Drawing.Point(321, 220);
+            this.checkBox_print_paper.Location = new System.Drawing.Point(321, 256);
             this.checkBox_print_paper.Name = "checkBox_print_paper";
             this.checkBox_print_paper.Size = new System.Drawing.Size(15, 14);
             this.checkBox_print_paper.TabIndex = 16;
@@ -237,7 +241,7 @@
             // checkBox_action_print
             // 
             this.checkBox_action_print.AutoSize = true;
-            this.checkBox_action_print.Location = new System.Drawing.Point(321, 83);
+            this.checkBox_action_print.Location = new System.Drawing.Point(320, 83);
             this.checkBox_action_print.Name = "checkBox_action_print";
             this.checkBox_action_print.Size = new System.Drawing.Size(15, 14);
             this.checkBox_action_print.TabIndex = 15;
@@ -266,7 +270,7 @@
             this.label16.AutoSize = true;
             this.label16.Font = new System.Drawing.Font("Cairo", 9.749999F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label16.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.label16.Location = new System.Drawing.Point(204, 216);
+            this.label16.Location = new System.Drawing.Point(204, 252);
             this.label16.Name = "label16";
             this.label16.Size = new System.Drawing.Size(111, 24);
             this.label16.TabIndex = 12;
@@ -277,7 +281,7 @@
             this.label15.AutoSize = true;
             this.label15.Font = new System.Drawing.Font("Cairo", 9.749999F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label15.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.label15.Location = new System.Drawing.Point(229, 79);
+            this.label15.Location = new System.Drawing.Point(228, 79);
             this.label15.Name = "label15";
             this.label15.Size = new System.Drawing.Size(86, 24);
             this.label15.TabIndex = 11;
@@ -299,7 +303,7 @@
             this.label13.AutoSize = true;
             this.label13.Font = new System.Drawing.Font("Cairo", 9.749999F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label13.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.label13.Location = new System.Drawing.Point(187, 48);
+            this.label13.Location = new System.Drawing.Point(186, 44);
             this.label13.Name = "label13";
             this.label13.Size = new System.Drawing.Size(128, 24);
             this.label13.TabIndex = 9;
@@ -310,7 +314,7 @@
             this.heat_degree.AutoSize = true;
             this.heat_degree.Font = new System.Drawing.Font("Cairo", 9.749999F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.heat_degree.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.heat_degree.Location = new System.Drawing.Point(153, 172);
+            this.heat_degree.Location = new System.Drawing.Point(153, 208);
             this.heat_degree.Name = "heat_degree";
             this.heat_degree.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.heat_degree.Size = new System.Drawing.Size(30, 24);
@@ -322,7 +326,7 @@
             this.label9.AutoSize = true;
             this.label9.Font = new System.Drawing.Font("Cairo", 9.749999F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label9.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.label9.Location = new System.Drawing.Point(225, 145);
+            this.label9.Location = new System.Drawing.Point(225, 181);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(114, 24);
             this.label9.TabIndex = 8;
@@ -332,7 +336,7 @@
             // 
             this.heat_degree_progressBar.BackColor = System.Drawing.Color.White;
             this.heat_degree_progressBar.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.heat_degree_progressBar.Location = new System.Drawing.Point(189, 172);
+            this.heat_degree_progressBar.Location = new System.Drawing.Point(189, 208);
             this.heat_degree_progressBar.Name = "heat_degree_progressBar";
             this.heat_degree_progressBar.Size = new System.Drawing.Size(146, 23);
             this.heat_degree_progressBar.TabIndex = 0;
@@ -345,7 +349,7 @@
             this.groupBox3.Controls.Add(this.start_simulation);
             this.groupBox3.Font = new System.Drawing.Font("Cairo", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.groupBox3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.groupBox3.Location = new System.Drawing.Point(35, 360);
+            this.groupBox3.Location = new System.Drawing.Point(35, 410);
             this.groupBox3.Name = "groupBox3";
             this.groupBox3.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
             this.groupBox3.Size = new System.Drawing.Size(747, 105);
@@ -434,6 +438,27 @@
             this.set_system_var_timer.Interval = 3000;
             this.set_system_var_timer.Tick += new System.EventHandler(this.set_system_var_timer_Tick);
             // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Cairo", 9.749999F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.label1.Location = new System.Drawing.Point(234, 146);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(80, 24);
+            this.label1.TabIndex = 17;
+            this.label1.Text = "حالة المكبس";
+            // 
+            // press_state
+            // 
+            this.press_state.BackColor = System.Drawing.Color.Gray;
+            this.press_state.Location = new System.Drawing.Point(322, 150);
+            this.press_state.Name = "press_state";
+            this.press_state.Size = new System.Drawing.Size(14, 14);
+            this.press_state.TabIndex = 18;
+            this.press_state.Text = "button1";
+            this.press_state.UseVisualStyleBackColor = false;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -491,6 +516,8 @@
         private System.Windows.Forms.CheckBox checkBox_action_print;
         private System.Windows.Forms.CheckBox checkBox_set_system_vars;
         private System.Windows.Forms.Timer set_system_var_timer;
+        private System.Windows.Forms.Button press_state;
+        private System.Windows.Forms.Label label1;
     }
 }
 

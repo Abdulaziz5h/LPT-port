@@ -19,6 +19,8 @@ namespace mainProject
         public static int heatDegree = 0;
         public static bool systemState = false;
         
+        byte Input, Data;
+
         public Form1()
         {
             InitializeComponent();
@@ -38,6 +40,7 @@ namespace mainProject
 
         private void init_variables(object sender, EventArgs e)
         {
+
             Form2 f2 = new Form2();
             f2.ShowDialog();
             init_Date_From_modal();
@@ -45,6 +48,7 @@ namespace mainProject
 
         private void start_simulation_Click(object sender, EventArgs e)
         {
+
             set_paper_printer.Enabled = true;
             heat_press.Enabled = true;
             action_print_Item_Timer.Enabled = true;
@@ -102,6 +106,7 @@ namespace mainProject
                     paper_printer_number.Text = totalPaperPrint.ToString();
                     finished_item_printed.Text = finishedItemsValue.ToString();
                     set_system_var_timer.Enabled = true;
+                    press_state.BackColor = Color.DarkRed;
                 }
             }
             else
@@ -118,9 +123,10 @@ namespace mainProject
             } else
             {
                 heatDegree = heatDegree < 28 ? heatDegree - 4 : heatDegree - 8;
-                if(heatDegree == 0)
+                if (heatDegree == 0)
                 {
                     heat_press.Enabled = false;
+                    press_state.BackColor = Color.Gray;
                 }
             }
             heat_degree.Text = heatDegree.ToString() + " Cْ";
@@ -147,6 +153,8 @@ namespace mainProject
             checkBox_action_print.Checked = false;
             finish_semulation.Enabled = false;
             finish_semulation.BackColor = Color.WhiteSmoke;
+            press_state.BackColor = Color.Gray;
+
             if (leftItemsValue == 0)
             {
                 start_simulation.Enabled = false;
@@ -166,6 +174,7 @@ namespace mainProject
             checkBox_action_print.Checked = false;
             action_print_Item_Timer.Enabled = true;
             set_system_var_timer.Enabled = false;
+            press_state.BackColor = Color.DarkGreen;
         }
     }
 }
