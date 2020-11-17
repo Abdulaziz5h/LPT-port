@@ -35,7 +35,7 @@ namespace mainProject
         {
             if((int)totalItemsTextBox.Value > 0)
             {
-                Form1.totalItemsValue   += (int)totalItemsTextBox.Value;
+                Form1.totalItemsValue   = +(int)totalItemsTextBox.Value;
                 Form1.leftItemsValue    = (int)totalItemsTextBox.Value;
                 this.Close();
             } else {

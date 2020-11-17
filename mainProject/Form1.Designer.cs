@@ -41,6 +41,8 @@
             this.label2 = new System.Windows.Forms.Label();
             this.paper_printer_number = new System.Windows.Forms.Label();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.press_state = new System.Windows.Forms.Button();
+            this.label1 = new System.Windows.Forms.Label();
             this.checkBox_print_paper = new System.Windows.Forms.CheckBox();
             this.checkBox_action_print = new System.Windows.Forms.CheckBox();
             this.checkBox_set_system_vars = new System.Windows.Forms.CheckBox();
@@ -62,8 +64,6 @@
             this.action_print_Item_Timer = new System.Windows.Forms.Timer(this.components);
             this.heat_press = new System.Windows.Forms.Timer(this.components);
             this.set_system_var_timer = new System.Windows.Forms.Timer(this.components);
-            this.label1 = new System.Windows.Forms.Label();
-            this.press_state = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.groupBox3.SuspendLayout();
@@ -87,7 +87,7 @@
             this.groupBox1.Location = new System.Drawing.Point(35, 65);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
-            this.groupBox1.Size = new System.Drawing.Size(358, 254);
+            this.groupBox1.Size = new System.Drawing.Size(358, 290);
             this.groupBox1.TabIndex = 0;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "حالة متحولات النظام";
@@ -95,11 +95,11 @@
             // label12
             // 
             this.label12.AutoSize = true;
-            this.label12.Font = new System.Drawing.Font("Cairo", 9.749999F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label12.Font = new System.Drawing.Font("Cairo", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label12.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.label12.Location = new System.Drawing.Point(242, 140);
+            this.label12.Location = new System.Drawing.Point(218, 104);
             this.label12.Name = "label12";
-            this.label12.Size = new System.Drawing.Size(96, 24);
+            this.label12.Size = new System.Drawing.Size(119, 29);
             this.label12.TabIndex = 9;
             this.label12.Text = "عدد قطع القصة";
             // 
@@ -141,11 +141,11 @@
             // totalItems
             // 
             this.totalItems.AutoSize = true;
-            this.totalItems.Font = new System.Drawing.Font("Cairo", 9.749999F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.totalItems.Font = new System.Drawing.Font("Cairo", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.totalItems.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.totalItems.Location = new System.Drawing.Point(39, 140);
+            this.totalItems.Location = new System.Drawing.Point(39, 104);
             this.totalItems.Name = "totalItems";
-            this.totalItems.Size = new System.Drawing.Size(17, 24);
+            this.totalItems.Size = new System.Drawing.Size(21, 29);
             this.totalItems.TabIndex = 5;
             this.totalItems.Text = "0";
             // 
@@ -165,7 +165,7 @@
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Cairo", 9.749999F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label4.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.label4.Location = new System.Drawing.Point(218, 104);
+            this.label4.Location = new System.Drawing.Point(218, 140);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(120, 24);
             this.label4.TabIndex = 3;
@@ -197,7 +197,7 @@
             this.paper_printer_number.AutoSize = true;
             this.paper_printer_number.Font = new System.Drawing.Font("Cairo", 9.749999F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.paper_printer_number.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.paper_printer_number.Location = new System.Drawing.Point(39, 104);
+            this.paper_printer_number.Location = new System.Drawing.Point(39, 140);
             this.paper_printer_number.Name = "paper_printer_number";
             this.paper_printer_number.Size = new System.Drawing.Size(17, 24);
             this.paper_printer_number.TabIndex = 0;
@@ -229,9 +229,31 @@
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "سير العملية";
             // 
+            // press_state
+            // 
+            this.press_state.BackColor = System.Drawing.Color.Gray;
+            this.press_state.Location = new System.Drawing.Point(322, 150);
+            this.press_state.Name = "press_state";
+            this.press_state.Size = new System.Drawing.Size(14, 14);
+            this.press_state.TabIndex = 18;
+            this.press_state.Text = "button1";
+            this.press_state.UseVisualStyleBackColor = false;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Cairo", 9.749999F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.label1.Location = new System.Drawing.Point(234, 146);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(80, 24);
+            this.label1.TabIndex = 17;
+            this.label1.Text = "حالة المكبس";
+            // 
             // checkBox_print_paper
             // 
             this.checkBox_print_paper.AutoSize = true;
+            this.checkBox_print_paper.Enabled = false;
             this.checkBox_print_paper.Location = new System.Drawing.Point(321, 256);
             this.checkBox_print_paper.Name = "checkBox_print_paper";
             this.checkBox_print_paper.Size = new System.Drawing.Size(15, 14);
@@ -241,6 +263,7 @@
             // checkBox_action_print
             // 
             this.checkBox_action_print.AutoSize = true;
+            this.checkBox_action_print.Enabled = false;
             this.checkBox_action_print.Location = new System.Drawing.Point(320, 83);
             this.checkBox_action_print.Name = "checkBox_action_print";
             this.checkBox_action_print.Size = new System.Drawing.Size(15, 14);
@@ -250,6 +273,7 @@
             // checkBox_set_system_vars
             // 
             this.checkBox_set_system_vars.AutoSize = true;
+            this.checkBox_set_system_vars.Enabled = false;
             this.checkBox_set_system_vars.Location = new System.Drawing.Point(321, 116);
             this.checkBox_set_system_vars.Name = "checkBox_set_system_vars";
             this.checkBox_set_system_vars.Size = new System.Drawing.Size(15, 14);
@@ -259,6 +283,7 @@
             // checkBox_check_paper_print
             // 
             this.checkBox_check_paper_print.AutoSize = true;
+            this.checkBox_check_paper_print.Enabled = false;
             this.checkBox_check_paper_print.Location = new System.Drawing.Point(320, 52);
             this.checkBox_check_paper_print.Name = "checkBox_check_paper_print";
             this.checkBox_check_paper_print.Size = new System.Drawing.Size(15, 14);
@@ -349,7 +374,7 @@
             this.groupBox3.Controls.Add(this.start_simulation);
             this.groupBox3.Font = new System.Drawing.Font("Cairo", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.groupBox3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.groupBox3.Location = new System.Drawing.Point(35, 410);
+            this.groupBox3.Location = new System.Drawing.Point(35, 381);
             this.groupBox3.Name = "groupBox3";
             this.groupBox3.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
             this.groupBox3.Size = new System.Drawing.Size(747, 105);
@@ -415,12 +440,12 @@
             // 
             // set_paper_printer
             // 
-            this.set_paper_printer.Interval = 1000;
+            this.set_paper_printer.Interval = 3000;
             this.set_paper_printer.Tick += new System.EventHandler(this.set_paper_printer_Tick);
             // 
             // print_paper
             // 
-            this.print_paper.Interval = 600;
+            this.print_paper.Interval = 1000;
             this.print_paper.Tick += new System.EventHandler(this.print_paper_Tick);
             // 
             // action_print_Item_Timer
@@ -438,27 +463,6 @@
             this.set_system_var_timer.Interval = 3000;
             this.set_system_var_timer.Tick += new System.EventHandler(this.set_system_var_timer_Tick);
             // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Cairo", 9.749999F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.label1.Location = new System.Drawing.Point(234, 146);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(80, 24);
-            this.label1.TabIndex = 17;
-            this.label1.Text = "حالة المكبس";
-            // 
-            // press_state
-            // 
-            this.press_state.BackColor = System.Drawing.Color.Gray;
-            this.press_state.Location = new System.Drawing.Point(322, 150);
-            this.press_state.Name = "press_state";
-            this.press_state.Size = new System.Drawing.Size(14, 14);
-            this.press_state.TabIndex = 18;
-            this.press_state.Text = "button1";
-            this.press_state.UseVisualStyleBackColor = false;
-            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -469,7 +473,11 @@
             this.Controls.Add(this.groupBox3);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.groupBox1);
+            this.MaximizeBox = false;
+            this.MinimizeBox = false;
             this.Name = "Form1";
+            this.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
+            this.RightToLeftLayout = true;
             this.Text = "الرئيسية";
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
