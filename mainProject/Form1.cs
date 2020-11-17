@@ -157,6 +157,7 @@ namespace mainProject
             if (heatDegree < 88 && systemState) // if((dataIn & 0x58) < 0x58)
             {
                 //Out32(0x378, 0x20);
+                // Output &= 0x09; Out1 = 1
                 heatDegree = heatDegree < 24 ? heatDegree + 4 : heatDegree + 8;
             } else
             {
@@ -164,6 +165,8 @@ namespace mainProject
                 heatDegree = heatDegree <= 24 ? heatDegree - 4 : heatDegree - 8;
                 if (heatDegree == 0)
                 {
+                    // 0x03 = 0000 0011
+                    // Output |= 0x02; Out1 = 0
                     heat_press.Enabled = false;
                     press_state.BackColor = Color.Gray;
                 }
