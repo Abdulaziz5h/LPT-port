@@ -20,15 +20,19 @@ namespace mainProject
         public static int heatDegree = 0;
         public static bool systemState = false;
 
+        // 1 In6 IN5 0 IN3 0 0 0
         // قيمة حساس وجود قماش تعاد على المنفذ leftItemsValue = IN6
         // قيمة حساس وجود ورق طباعة تعاد على المنفذ totalPaperPrint = IN3
         // قيمة حساس الحرارة تعاد على المنفذ heatDegree = IN5
 
+        // 0 0 Out5 0 Out3 0 Out1 Out0
         // Out0 <= print paper
         // Out1 <= heat press
+        // Out2 <= not used 
         // Out3 <= Piston pressure
+        // Out5 <= set dataPort to input
 
-        int Input, Output;
+        int Input, Output, dataIn;
 
         public Form1()
         {
@@ -37,9 +41,11 @@ namespace mainProject
         private void Form1_Load(object sender, EventArgs e)
         {
             Output = 0;
-            //Out32(0x37A, 0x0B);
-            //Out32(0x378, 0x20);
+            //0x2B = 0010 1011
+            //Out32(0x37A, 0x2B);
         }
+
+
         public void init_Date_From_modal()
         {
             totalItems.Text = totalItemsValue.ToString();
@@ -88,10 +94,10 @@ namespace mainProject
         {
             // check is need to paper
             // leftItemsValue = IN6, totalPaperPrint = IN3
-            if (leftItemsValue > 0 && totalPaperPrint == 0)// if(((Input & 0xC0) == 0xC0) && ((Input & 0x88) != 0x88))
+            if (leftItemsValue > 0 && totalPaperPrint == 0)// if(((Input & 0x40) == 0x40) && !((Input & 0x08) == 0x08))
             {
-                // 0x0A = 0000 1010
-                // Output &= 0x0A; Out0 = 1
+                // 0x2A = 0010 1010
+                // Output &= 0x2A; Out0 = 1
                 checkBox_check_paper_print.Checked = true;
                 checkBox_print_paper.Checked = true;
 
@@ -115,16 +121,18 @@ namespace mainProject
         {
             // فحص وقيمة حساس وجود قطع للطباعة    
             // 0xC0 = 1100 0000
-            if (leftItemsValue != 0) // if (input & 0xC0 == 0xC0)
+            if (leftItemsValue > 0) // if (input & 0x40 == 0x40)
             {
                 // فحص وقيمة حساس وجود  ورق طباعة وفحص حالة حساس الحرارة
+                // 0x88 = 1000 1000
+                // 0xB4 = 1011 0100
                 // 0xA8 = 1010 1000
-                if (heatDegree <= 88 && heatDegree >= 80 && totalPaperPrint != 0) // if(( (input & 0x88) == 0x88 ) && ( (dataIn & 0x58) <= 0x58 ) && ( (dataIn & 0x50) >= 0x50))
+                // الشرط بفرض  اننا حولنا من منافذ الداتا قيمة عشرية لمعرفة درجة الحرارة
+                if (heatDegree <= 180 && heatDegree >= 168 && totalPaperPrint != 0) // if(( (input & 0x08) == 0x08 ) && ( (dataIn & 0xB4) <= 0xB4 ) && ( (dataIn & 0xA8) >= 0xA8))
                 {
-                    //Out32(0x378, 0x20);
                     // ضغط المكبس على القماش
-                    // 0x03 = 0000 0011
-                    // Output &= 0x03; Out3 = 1
+                    // 0x23 = 0010 0011
+                    // Output &= 0x23; Out3 = 1
                     action_print_Item_Timer.Enabled = false;
 
                     checkBox_set_system_vars.Checked = false;
@@ -140,7 +148,6 @@ namespace mainProject
                     set_system_var_timer.Enabled = true;
                     press_state.BackColor = Color.DarkRed;
                 }
-                //Out32(0x378, 0x20);
             }
             else
             {
@@ -153,16 +160,15 @@ namespace mainProject
         {
             // قيمة حساس الحرارة تعاد على المنافذ data ports
             // التي تعيد قيمة درجة الحرارة
-            // 0x58 = 0101 1000
-            if (heatDegree < 88 && systemState) // if((dataIn & 0x58) < 0x58)
+            // 0xB4 = 1011 0100
+            if (heatDegree < 180 && systemState) // if((dataIn & 0xB4) < 0xB4)
             {
-                //Out32(0x378, 0x20);
-                // Output &= 0x09; Out1 = 1
-                heatDegree = heatDegree < 24 ? heatDegree + 4 : heatDegree + 8;
+                // 0x29 = 0010 1001
+                // Output &= 0x29; Out1 = 1
+                heatDegree = heatDegree < 48 ? heatDegree + 8 : heatDegree + 12;
             } else
             {
-                //Out32(0x378, 0x20);
-                heatDegree = heatDegree <= 24 ? heatDegree - 4 : heatDegree - 8;
+                heatDegree = heatDegree <= 48 ? heatDegree - 8 : heatDegree - 12;
                 if (heatDegree == 0)
                 {
                     // 0x03 = 0000 0011
@@ -172,7 +178,7 @@ namespace mainProject
                 }
             }
             heat_degree.Text = heatDegree.ToString() + " Cْ";
-            heat_degree_progressBar.Value = heatDegree;
+            heat_degree_progressBar.Value = heatDegree /2;
         }
 
 
@@ -184,8 +190,8 @@ namespace mainProject
         
         public void finish_semulation_method()
         {
-            // 0x0B = 0000 1011
-            // Output = 0x0B; Out1 = 0, Out2 = 0, Out3 = 0, Out4 = 0;
+            // 0x0B = 0010 1011
+            // Output = 0x2B; Out1 = 0, Out2 = 0, Out3 = 0, Out4 = 0;
             set_paper_printer.Enabled = false;
 
             print_paper.Enabled = false;
@@ -197,6 +203,8 @@ namespace mainProject
             set_system_variables.Text = "تحديد عدد القصة";
             system_state.Text = "النظام في حالة توقف";
             system_state.BackColor = Color.Silver;
+            
+            checkBox_check_paper_print.Checked = false;
 
             checkBox_set_system_vars.Checked = false;
             checkBox_action_print.Checked = false;
@@ -204,7 +212,7 @@ namespace mainProject
             finish_semulation.BackColor = Color.WhiteSmoke;
             press_state.BackColor = Color.Gray;
 
-            if (leftItemsValue == 0)
+            if (leftItemsValue == 0) // if(Input & 0x40) == 0x40)
             {
                 start_simulation.Enabled = false;
                 start_simulation.BackColor = Color.WhiteSmoke;

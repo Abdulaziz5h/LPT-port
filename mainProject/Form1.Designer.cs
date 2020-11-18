@@ -393,7 +393,7 @@
             this.finish_semulation.Name = "finish_semulation";
             this.finish_semulation.Size = new System.Drawing.Size(204, 39);
             this.finish_semulation.TabIndex = 2;
-            this.finish_semulation.Text = "انهاء المحاكاة";
+            this.finish_semulation.Text = "إنهاء المحاكاة";
             this.finish_semulation.UseVisualStyleBackColor = false;
             this.finish_semulation.Click += new System.EventHandler(this.finish_semulation_Click);
             // 
@@ -423,7 +423,7 @@
             this.start_simulation.Name = "start_simulation";
             this.start_simulation.Size = new System.Drawing.Size(244, 39);
             this.start_simulation.TabIndex = 0;
-            this.start_simulation.Text = "بداية المحاكاة";
+            this.start_simulation.Text = "بدء المحاكاة";
             this.start_simulation.UseVisualStyleBackColor = false;
             this.start_simulation.Click += new System.EventHandler(this.start_simulation_Click);
             // 
