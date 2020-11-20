@@ -20,10 +20,11 @@ namespace mainProject
         public static int heatDegree = 0;
         public static bool systemState = false;
 
-        // 1 In6 IN5 0 IN3 0 0 0
+        // 1 In6 0 0 IN3 0 0 0
         // قيمة حساس وجود قماش تعاد على المنفذ leftItemsValue = IN6
         // قيمة حساس وجود ورق طباعة تعاد على المنفذ totalPaperPrint = IN3
-        // قيمة حساس الحرارة تعاد على المنفذ heatDegree = IN5
+
+        // قيمة حساس الحرارة تعاد على المنافذ heatDegree = dataInput
 
         // 0 0 Out5 0 Out3 0 Out1 Out0
         // Out0 <= print paper
@@ -43,6 +44,9 @@ namespace mainProject
             Output = 0;
             //0x2B = 0010 1011
             //Out32(0x37A, 0x2B);
+
+            //dataIn = input32(0x378)
+            //Input = input32(0x379)
         }
 
 
@@ -51,7 +55,7 @@ namespace mainProject
             totalItems.Text = totalItemsValue.ToString();
             leftItem.Text   = leftItemsValue.ToString();
 
-            if(totalItemsValue > 0)
+            if(leftItemsValue > 0) // if((Input & 0x40) == 0x40)
             {
                 start_simulation.Enabled = true;
                 start_simulation.BackColor = Color.LightBlue;
@@ -65,11 +69,10 @@ namespace mainProject
             f2.ShowDialog();
             init_Date_From_modal();
         }
-        
+
 
         private void start_simulation_Click(object sender, EventArgs e)
         {
-
             systemState = true;
             // start check paper's print
             set_paper_printer.Enabled = true;
